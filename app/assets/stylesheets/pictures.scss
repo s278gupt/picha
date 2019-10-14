@@ -1,0 +1,35 @@
+// Place all the styles related to the Pictures controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.albums{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 20px;
+    .album{   
+        width: 280px;
+        height: 280px;
+        margin: 15px;  
+        margin-bottom: 100px; 
+        .metadata{
+            display: flex;
+            justify-content: space-between;
+            .date{
+            padding-top: 13px;
+            color: #262626;
+            font-size: 14px;
+            font-weight: 600;
+            }
+        }
+        .main-image{
+            border-radius: 4%;
+            width: 278px;
+            height: 278px;
+            object-fit: cover;
+            border: 1px solid #efefef;
+        }
+        .description{
+            padding: 20px;
+        }
+    }
+}
