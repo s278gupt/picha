@@ -10,6 +10,40 @@
   </head>
 
   <body>
-    <%= yield %>
+    <!--Navigation Bar-->
+    <nav class="navbar navbar-light bg-light d-flex">
+      <div class="container">
+        <div class="logo">
+          <a class="navbar-brand" href="<%= root_path %>">
+            <%= fa_stacked_icon "camera"%>
+            Picha
+          </a>
+        </div>
+        <div class="m-auto">
+          <form class="form-inline search-form">
+            <input class="form-control mr-sm-2" type="search" placeholder="search" aria-label="Search">
+          </form>
+        </div>
+        <div class="user-section">
+          <% if user_signed_in? %>
+            <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+          <% else %>
+            <%= button_to "Sign in", new_user_session_path %>
+          <% end %>
+        </div>
+      </div>
+    </nav>
+
+    <!--Main content-->
+    <main class="container" style="min-height: 620px;; padding-top: 20px;">
+      <%= yield %>
+    </main>
+
+    <!--Footer-->
+    <footer class="container footer">
+      <nav class="navbar d-flex">
+        <p> © 2019 s278gupt </p>
+      </nav>
+    </footer>
   </body>
 </html>

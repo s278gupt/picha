@@ -23,6 +23,10 @@ gem 'pg'
 gem 'bootstrap', '~> 4.1.1'
 # Use Jquery for Bootstrap dependencies
 gem 'jquery-rails'
+# Use Font Awesome for icons
+gem 'font-awesome-rails'
+# Use Devise for user authentication
+gem 'devise'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
