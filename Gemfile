@@ -17,6 +17,12 @@ gem 'webpacker', '~> 4.0'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
+# Use PostgreSQL for database
+gem 'pg'
+# Use Bootstrap
+gem 'bootstrap', '~> 4.1.1'
+# Use Jquery for Bootstrap dependencies
+gem 'jquery-rails'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
