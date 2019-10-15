@@ -23,6 +23,13 @@ class AlbumsController < ApplicationController
         end
     end
 
+    # GET albums/:id
+    def index
+        if user_signed_in?
+            @albums = current_user.albums.order(created_at: :desc)
+        end
+    end
+
     private
         def album_params
             params.require(:album).permit(:user_id, :name, images: [])

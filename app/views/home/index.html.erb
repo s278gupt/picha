@@ -1,6 +1,13 @@
 <% if user_signed_in? %>
     <%= link_to 'New Album', new_album_path %>
-    <%= render template: "pictures/index" %>   
+    <%= link_to 'Upload File', new_picture_path %><br>
+    <div class="albums">
+        <%= render template: "albums/index" %>
+    </div>
+    <hr>
+    <div class="albums">
+        <%= render template: "pictures/index" %>
+    </div>   
 <% else %>
     <h1>Hi! Please sign in to continue.</h1>    
     <%= button_to "Sign in", new_user_session_path %>

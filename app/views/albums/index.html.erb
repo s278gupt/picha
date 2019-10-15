@@ -1,0 +1,14 @@
+<% @albums.each do |album| %>
+    <section class="album">
+        <div class="metadata">
+            <div class="date">
+                <%= album.created_at %>
+            </div>
+        </div>
+        <%= image_tag album.first_image(album.id), class: 'main-image' %>
+        <div class="links">
+            <h3><%= link_to album.name, album %></h3>
+            <%= button_to 'Remove', album, method: :delete, data: { confirm: "Are you sure?" }%>
+        </div>
+    </section>
+<% end %>

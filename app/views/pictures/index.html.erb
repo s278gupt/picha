@@ -1,22 +1,13 @@
-<div class="homepage">
-<% if user_signed_in? %>
-    <%= link_to 'Upload File', new_picture_path %><br>
-    <div class="albums">
-        <% @pictures.each do |picture| %>
-            <section class="album">
-                <div class="metadata">
-                    <div class="date">
-                        <%= picture.created_at %>
-                    </div>
-                </div>
-                <%= image_tag picture.image.variant(resize: '500x500').processed, class: 'main-image' %>
-                <div class="links">
-                    <%= button_to 'Remove', picture, method: :delete, data: { confirm: "Are you sure?" }%>
-                </div>
-            </section>
-        <% end %>
-    </div>
-<% else %>
-    <%= button_to "Sign in", new_user_session_path %>
+<% @pictures.each do |picture| %>
+    <section class="album">
+        <div class="metadata">
+            <div class="date">
+                <%= picture.created_at %>
+            </div>
+        </div>
+        <%= image_tag picture.image.variant(resize: '500x500').processed, class: 'main-image' %>
+        <div class="links">
+            <%= button_to 'Remove', picture, method: :delete, data: { confirm: "Are you sure?" }%>
+        </div>
+    </section>
 <% end %>
-</div>
