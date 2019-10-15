@@ -16,7 +16,7 @@ class PicturesController < ApplicationController
 
         respond_to do |format|
             if @picture.save
-                format.html { redirect_to pictures_path, notice: 'Picture was successfully uploaded.' }
+                format.html { redirect_to root_path, notice: 'Picture was successfully uploaded.' }
                 format.json { render :index, status: :created, location: @picture }
             else
                 format.html { render :new }

@@ -6,15 +6,20 @@ class AlbumsController < ApplicationController
 
     # POST albums/new
     def create
-        @album = Album.create!(name: params[:album][:name], user_id: params[:album][:user_id])
+        @album = Album.create(name: params[:album][:name], user_id: params[:album][:user_id])
 
         params[:album][:images].each do |img|
             Picture.create!(image: img, album_id: @album.id, user_id: params[:album][:user_id])
         end
 
         respond_to do |format|
-            format.html { redirect_to pictures_path, notice: 'Picture was successfully deleted.' }
-            format.json { head :no_content }
+            if @album.save
+                format.html { redirect_to root_path, notice: 'Album was successfully uploaded.' }
+                format.json { render :index, status: :created, location: @album }
+            else
+                format.html { render :new }
+                format.json { render json: @album.errors, status: :unprocessable_entity }
+            end
         end
     end
 
