@@ -10,6 +10,10 @@ class PicturesController < ApplicationController
     def create
         @picture = Picture.new(picture_params)
 
+        if !picture_params[:album_id]
+            @picture.album_id = nil
+        end
+
         respond_to do |format|
             if @picture.save
                 format.html { redirect_to pictures_path, notice: 'Picture was successfully uploaded.' }
