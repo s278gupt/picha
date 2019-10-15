@@ -27,6 +27,8 @@ gem 'jquery-rails'
 gem 'font-awesome-rails'
 # Use Devise for user authentication
 gem 'devise'
+# Use PGSearch for searching
+gem 'pg_search'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password

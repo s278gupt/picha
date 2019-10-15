@@ -20,9 +20,10 @@
           </a>
         </div>
         <div class="m-auto">
-          <form class="form-inline search-form">
-            <input class="form-control mr-sm-2" type="search" placeholder="search" aria-label="Search">
-          </form>
+          <%= form_tag pictures_path, method: :get do %>
+            <%= text_field_tag 'tag', params[:tag], placeholder: "Enter tag" %>
+            <%= submit_tag 'Search!' %>
+          <% end %>
         </div>
         <div class="user-section">
           <% if user_signed_in? %>

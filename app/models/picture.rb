@@ -8,6 +8,9 @@ class Picture < ApplicationRecord
 
     validate :image_type
 
+    include PgSearch
+    pg_search_scope :search_by_tag, against: [:all_tags]
+
     def all_tags=(names)
         self.tags = names.split(",").map do |name|
             Tag.where(name: name.strip).first_or_create!
