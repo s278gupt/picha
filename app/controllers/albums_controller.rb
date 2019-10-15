@@ -1,4 +1,6 @@
 class AlbumsController < ApplicationController
+    before_action :set_album, only: [:show, :destroy, :edit, :update]
+
     # GET albums/new
     def new
         @album = Album.new
@@ -32,13 +34,11 @@ class AlbumsController < ApplicationController
 
     # GET albums/:id/pictures
     def show
-        @album = Album.find(params[:id])
         @pictures = Picture.where(album_id: @album.id)
     end
 
     # DELETE albums/:id
     def destroy
-        @album = Album.find(params[:id])
         @album.destroy
 
         respond_to do |format|
@@ -47,8 +47,27 @@ class AlbumsController < ApplicationController
         end
     end
 
+    # GET albums/:id/edit
+    def edit
+    end
+
+    # PUT albums/:id/
+    def update
+        @album.update(name: params[:album][:name])
+
+        params[:album][:images].each do |img|
+            Picture.create!(image: img, album_id: @album.id, user_id: params[:album][:user_id])
+        end
+        
+        redirect_to album_path
+    end
+
     private
         def album_params
             params.require(:album).permit(:user_id, :name, images: [])
+        end
+
+        def set_album
+            @album = current_user.albums.find(params[:id])   
         end
 end
