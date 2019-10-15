@@ -1,0 +1,21 @@
+<div class = "links">
+  <%= link_to 'Back', root_path, class: 'link' %>
+  <%= link_to 'Upload new images', edit_album_path, class: 'link' %>
+</div>
+
+<h1><%= @album.name %></h1>
+
+<div class="gallery" id="gallery">
+  <% @pictures.each do |picture| %>
+    <div class="mb-3 pics all 2">
+        <%= image_tag picture.image.variant(resize: '500x500').processed, class: 'rounded gallery-image' %>
+        <div class="caption">
+            <ul class="metadata">
+                <li><%= picture.image.metadata['width'] %> x <%= picture.image.metadata['height'] %></li>
+                <li><%= picture.image.created_at %></li>
+            </ul>
+            <%= button_to 'Remove', picture, method: :delete, data: { confirm: "Are you sure?" }%>
+        </div>
+    </div>
+  <% end %>
+</div>

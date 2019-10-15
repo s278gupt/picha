@@ -30,6 +30,23 @@ class AlbumsController < ApplicationController
         end
     end
 
+    # GET albums/:id/pictures
+    def show
+        @album = Album.find(params[:id])
+        @pictures = Picture.where(album_id: @album.id)
+    end
+
+    # DELETE albums/:id
+    def destroy
+        @album = Album.find(params[:id])
+        @album.destroy
+
+        respond_to do |format|
+            format.html { redirect_to root_path, notice: 'Picture was successfully deleted.' }
+            format.json { head :no_content }
+        end
+    end
+
     private
         def album_params
             params.require(:album).permit(:user_id, :name, images: [])

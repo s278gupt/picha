@@ -34,10 +34,19 @@ class PicturesController < ApplicationController
 
     # DELETE pictures/:id
     def destroy
-        @picture.destroy
+        if @picture.album_id
+            if Picture.where(album_id: @picture.album_id).count == 1
+                @album = Album.where(id: @picture.album_id)
+                @album.destroy(@picture.album_id)
+            else
+                @picture.destroy
+            end
+        else
+            @picture.destroy
+        end
 
         respond_to do |format|
-            format.html { redirect_to pictures_path, notice: 'Picture was successfully deleted.' }
+            format.html { redirect_to root_path, notice: 'Picture was successfully deleted.' }
             format.json { head :no_content }
         end
     end
