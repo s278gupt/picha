@@ -1,6 +1,8 @@
 <% if user_signed_in? %>
-    <%= link_to 'New Album', new_album_path %>
-    <%= link_to 'Upload File', new_picture_path %><br>
+    <div class="nav-links">
+        <%= link_to 'New Album', new_album_path, class: 'link' %>
+        <%= link_to 'Upload File', new_picture_path, class: 'link' %><br>
+    </div>
     <div class="albums">
         <%= render template: "albums/index" %>
     </div>
