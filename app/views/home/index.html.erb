@@ -1,4 +1,5 @@
 <% if user_signed_in? %>
+    <%= link_to 'New Album', new_album_path %>
     <%= render template: "pictures/index" %>   
 <% else %>
     <h1>Hi! Please sign in to continue.</h1>    

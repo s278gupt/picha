@@ -8,7 +8,6 @@ class Picture < ApplicationRecord
 
     private
     def image_type
-
         if !image.attached?
             errors.add(:image, "please select images")
         else
