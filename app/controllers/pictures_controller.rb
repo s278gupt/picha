@@ -28,7 +28,11 @@ class PicturesController < ApplicationController
     # GET pictures/:id
     def index
         if user_signed_in?
-            @pictures = current_user.pictures.order(created_at: :desc)
+            if params[:tag]
+                @pictures = Picture.tagged_with(params[:tag])
+            else
+                @pictures = current_user.pictures.order(created_at: :desc)
+            end
         end
     end
 

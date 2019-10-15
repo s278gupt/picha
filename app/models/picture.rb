@@ -18,6 +18,10 @@ class Picture < ApplicationRecord
         self.tags.map(&:name).join(", ")
     end
 
+    def self.tagged_with(name)
+        Tag.find_by_name!(name).pictures
+      end
+
     private
     def image_type
         if !image.attached?
