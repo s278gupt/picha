@@ -7,6 +7,7 @@
         </div>
         <%= image_tag picture.image.variant(resize: '500x500').processed, class: 'main-image' %>
         <div class="links">
+            <p><small>Tags: <%= raw picture.all_tags %></small</p>
             <%= button_to 'Remove', picture, method: :delete, data: { confirm: "Are you sure?" }%>
         </div>
     </section>

@@ -11,7 +11,8 @@ class AlbumsController < ApplicationController
         @album = Album.create(name: params[:album][:name], user_id: params[:album][:user_id])
 
         params[:album][:images].each do |img|
-            Picture.create!(image: img, album_id: @album.id, user_id: params[:album][:user_id])
+            Picture.create!(image: img, album_id: @album.id, user_id: params[:album][:user_id], 
+            all_tags: params[:album][:all_tags])
         end
 
         respond_to do |format|
@@ -64,7 +65,7 @@ class AlbumsController < ApplicationController
 
     private
         def album_params
-            params.require(:album).permit(:user_id, :name, images: [])
+            params.require(:album).permit(:user_id, :name, :all_tags, images: [])
         end
 
         def set_album

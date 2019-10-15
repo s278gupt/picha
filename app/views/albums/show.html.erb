@@ -13,6 +13,7 @@
             <ul class="metadata">
                 <li><%= picture.image.metadata['width'] %> x <%= picture.image.metadata['height'] %></li>
                 <li><%= picture.image.created_at %></li>
+                <p><small>Tags: <%= raw picture.all_tags %></small</p>
             </ul>
             <%= button_to 'Remove', picture, method: :delete, data: { confirm: "Are you sure?" }%>
         </div>
