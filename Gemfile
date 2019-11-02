@@ -20,7 +20,7 @@ gem 'jbuilder', '~> 2.7'
 # Use PostgreSQL for database
 gem 'pg'
 # Use Bootstrap
-gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap', '~> 4.3.1'
 # Use Jquery for Bootstrap dependencies
 gem 'jquery-rails'
 # Use Font Awesome for icons
